@@ -1,3 +1,5 @@
+# _*_ coding: utf-8 _*_
+
 """taskbuster URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -15,11 +17,16 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.conf.urls.i18n import i18n_patterns
 from .views import home, home_files
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', home, name='home'),
     url(r'^(?P<filename>(robots.txt)|(humans.txt))$', 
     	home_files, name='home_files'),
+    url(r'i18n/', include('django.conf.urls.i18n')),
 ]
+
+urlpatterns += i18n_patterns(
+	url(r'^$', home, name='home'),
+	url(r'^admin/', include(admin.site.urls)),
+	)
