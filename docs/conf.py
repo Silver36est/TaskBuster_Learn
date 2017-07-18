@@ -19,6 +19,7 @@
 #
 import os
 import sys
+import shlex
 sys.path.insert(0, os.path.abspath('..'))
 from django.conf import settings
 settings.configure()
@@ -154,6 +155,3 @@ texinfo_documents = [
      author, 'TaskBuster', 'One line description of project.',
      'Miscellaneous'),
 ]
-
-
-
